@@ -54,6 +54,26 @@ function Crawler(token, options) {
 }
 
 Crawler.prototype = {
+  starred: function (onperson, done) {
+    var that = this
+    this.options.get.starred(function (err, people) {
+      if (err) {
+        console.error('Error while retrieving starred people')
+        return done()
+      }
+      async.parallel(people.map(function (data) {
+        return function (next) {
+          that.cache.data[data.id] = data
+          that.getMore(data.id, function (err, person) {
+            onperson(person)
+            next()
+          })
+        }
+      }), function () {
+        done()
+      })
+    })
+  },
   crawl: function (start, num, onperson, done) {
     var gotten = 0
     breadthFirst(start, function () {
@@ -69,46 +89,6 @@ Crawler.prototype = {
     breadthFirst(start, function (crawled, gen) {
       return gen > gens
     }, this.getPerson.bind(this), onperson, done)
-  },
-  crawl: function (start, num, onperson, done) {
-    var crawled = []
-      , numfound = 0
-      , lastgen = [start]
-      , nextgen = []
-      , that = this
-    function next() {
-      if (lastgen.length === 0) {
-        lastgen = nextgen
-        nextgen = []
-      }
-      if (lastgen.length === 0) {
-        console.error('Ran out of people to crawl through')
-        done(crawled.length)
-      }
-      var pid = lastgen.unshift()
-      if (crawled.indexOf(pid) !== -1) {
-        console.error('crawling twice', pid)
-        return next()
-      }
-      crawled.push(pid)
-      that.getMore(pid, function (err, person) {
-        if (err) {
-          console.error('Error while getting more', pid)
-          return next()
-        }
-        nextgen = nextgen.concat(person.rels.parents)
-        onperson(person, !!person.data.todos.length, crawled.length)
-        if (person.data.todos.length) {
-          numfound += 1
-        }
-        if (numfound < num) {
-          next()
-        } else {
-          done(crawled.length)
-        }
-      })
-    }
-    next()
   },
   get: function (what, id, done) {
     if (this.cache[what][id]) {

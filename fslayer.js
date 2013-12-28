@@ -49,9 +49,17 @@ function makeCrawler(token, cached, db) {
           id: id
         }, done)
       },
-      history: function (id, done) {
+      history: function (done) {
         db.collection('history').find({
-          id: id,
+          user: token,
+        }, {
+          sort: 'modified'
+        }).toArray(done)
+      },
+      starred: function (done) {
+        db.collection('people').find({
+          user: token,
+          starred: true
         }, {
           sort: 'modified'
         }).toArray(done)
