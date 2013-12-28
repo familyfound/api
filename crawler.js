@@ -1,6 +1,10 @@
 
 // More gets you 1) sources 2) duplicates 3) temple
 
+var async = require('async')
+
+  , utils = require('./utils')
+
 module.exports = Crawler
 
 function breadthFirst(start, stop, get, onperson, done) {
@@ -13,7 +17,9 @@ function breadthFirst(start, stop, get, onperson, done) {
       curgen += 1
       lastgen = nextgen
       nextgen = []
-      if (
+      if (stop(crawled.length, curgen)) {
+        return done(crawled.length, curgen)
+      }
     }
     if (lastgen.length === 0) {
       console.error('Ran out of people to crawl through')
@@ -35,12 +41,12 @@ function breadthFirst(start, stop, get, onperson, done) {
       if (!stop(crawled.length, curgen)) {
         next()
       } else {
-        done(crawled.length)
+        done(crawled.length, curgen)
       }
     })
   }
   next()
-},
+}
 
 // get: {more, rels, data}
 //
@@ -102,6 +108,7 @@ Crawler.prototype = {
     })
   },
   getMore: function (id, done) {
+    var that = this
     async.parallel({
       rels: this.get.bind(this, 'rels', id),
       more: this.get.bind(this, 'more', id),
@@ -112,7 +119,6 @@ Crawler.prototype = {
       that.options.saveTodos(id, person.data.todos)
       done(null, person)
     })
-    done.bind(null, id))
   },
   getPerson: function (id, done) {
     async.parallel({

@@ -33,7 +33,7 @@ module.exports = {
       }
     },
     'find death info': {
-      title 'Find death information',
+      title: 'Find death information',
       check: function (person) {
         return !person.rels.display.deathDate || !person.rels.display.deathPlace
       }

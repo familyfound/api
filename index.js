@@ -8,7 +8,9 @@ var express = require('express')
   , mdb = require('mongodb')
   , MongoClient = mdb.MongoClient
 
+  , getCrawler = require('./fslayer')
   , config = require('./config')
+  , Socket = require('./socket')
 
 app.use(cors())
 
@@ -26,6 +28,6 @@ function newsocket(socket) {
 }
 
 io.sockets.on('connection', function (socket) {
-  new Socket(socket)
+  newsocket(socket)
 })
 

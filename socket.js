@@ -5,7 +5,6 @@
 // get.history(id, done(err, items))
 function Socket(socket, crawler) {
   this.sock = socket
-  this.options = options
   this.listen()
 }
 
@@ -33,6 +32,7 @@ Socket.prototype = {
     }, done)
   },
   crawl: function (id, numpeople, done) {
+    var that = this
     this.crawler.crawl(id, numpeople, function (person, hastodos, numcrawled) {
       that.sock.emit('more_person', person, hastodos, numcrawled)
     }, done)

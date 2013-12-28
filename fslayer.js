@@ -1,7 +1,12 @@
 
 var getDb = require('./db')
-  , config = require('config')
-  , Crawler = require('crawler')
+  , config = require('./config')
+  , Crawler = require('./crawler')
+
+  , async = require('async')
+  , mdb = require('mongodb')
+  , MongoClient = mdb.MongoClient
+  , fs = require('familysearch')
 
 // getcrawler
 module.exports = function (token, done) {
