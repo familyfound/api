@@ -1,4 +1,6 @@
 
+module.exports = Socket
+
 // get.data(id, done(err, data))
 // get.rels(id, done(err, rels))
 // get.more(id, done(err, more))

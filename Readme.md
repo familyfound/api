@@ -7,8 +7,6 @@ Indicated to the server that this person is needed
 ## rebase, personId, generations
 cancel all current fetches; they're not important
 
-
-
 # first time
 
 start and the base, get /person-with-relationships
@@ -17,7 +15,6 @@ start and the base, get /person-with-relationships
 2 fire a "got person"
 3 async goto 1 w/ father, mother
 4 get root person's sources?
-
 
 # Things I'm interested in
 

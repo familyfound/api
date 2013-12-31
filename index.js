@@ -5,14 +5,12 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
 
-  , mdb = require('mongodb')
-  , MongoClient = mdb.MongoClient
-
   , getCrawler = require('./fslayer')
   , config = require('./config')
   , Socket = require('./socket')
 
 app.use(cors())
+app.use(express.static(__dirname + '/public'))
 
 server.listen(config.port, function () {
   console.log('listening')

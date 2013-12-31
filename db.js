@@ -4,6 +4,7 @@ var mdb = require('mongodb')
   , debugs = require('debug')
   , debug = debugs('familyfound:db')
   , error = debugs('familyfound:db:error')
+
   , config = require('./config')
   , _db = null;
 
