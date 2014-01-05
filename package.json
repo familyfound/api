@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "description": "FamilyFound api, front and backends",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/familyfound/backend"
+  },
+  "author": "Jared Forsyth",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/familyfound/backend/issues"
+  },
+  "homepage": "https://github.com/familyfound/backend",
+  "devDependencies": {
+    "expect.js": "~0.2.0",
+    "lodash": "~2.4.1"
+  }
+}
