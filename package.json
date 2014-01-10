@@ -26,6 +26,7 @@
   "dependencies": {
     "async": "~0.2.9",
     "mongodb": "~1.3.23",
-    "familysearch": "0.0.5"
+    "familysearch": "0.0.5",
+    "debug": "~0.7.4"
   }
 }
