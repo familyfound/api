@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "repo": "familyfound/api",
+  "description": "The client-side api lib",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "client/index.js",
+  "scripts": [
+    "client/index.js",
+    "client/utils.js",
+    "lib/todos.js"
+  ]
+}
