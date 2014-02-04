@@ -10,5 +10,9 @@
   "-W089": false,
   "-W098": false,
   "-W116": false,
-  "-W065": false
+  "-W065": false,
+  "globals": {
+    "describe": true,
+    "it": true
+  }
 }
