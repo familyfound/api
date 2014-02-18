@@ -7,6 +7,9 @@ var fixtures = {
     yes: [{
       more: {
         duplicates: [1,2]
+      },
+      rels: {
+        id: ''
       }
     }],
     no: [{
