@@ -7,9 +7,17 @@ var Crawler = require('../lib/crawler')
   , token = process.env.TOKEN
   , skip = !userId || !token
 
+  , fs = require('fs')
   , sinon = require('sinon')
   , expect = require('expect.js')
 
+if (fs.existsSync(__dirname + '/.special')) {
+  var parts = fs.readFileSync(__dirname + '/.special', 'utf8').trim().split(':')
+  userId = parts[0]
+  token = parts[1]
+  skip = false
+}
+skip = skip || !process.env.INTEG
 
 ;(skip ? describe.skip : describe)('Crawler Impl tests', function () {
   this.timeout(10000)
