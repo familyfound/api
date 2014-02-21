@@ -5,7 +5,8 @@ var todos = require('../lib/todos')
 module.exports = {
   todos: {
     map: todos,
-    titles: utils.getTodoTitles(todos)
+    titles: utils.getTodoTitles(todos),
+    types: utils.typeMap(todos)
   }
 }
 
