@@ -2,7 +2,7 @@
   "name": "api",
   "repo": "familyfound/api",
   "description": "The client-side api lib",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "keywords": [],
   "dependencies": {},
   "development": {},
