@@ -14,4 +14,7 @@ test:
 clean:
 	rm -fr build components template.js
 
-.PHONY: clean test lint
+docs:
+	@node docme.js
+
+.PHONY: clean test lint docs
