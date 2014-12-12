@@ -1,0 +1,3 @@
+[submodule "familysearch"]
+	path = familysearch
+	url = https://github.com/familyfound/familysearch.git
