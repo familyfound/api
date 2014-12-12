@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.2.1",
+  "version": "1.2.5",
   "description": "FamilyFound api, front and backends",
   "main": "index.js",
   "directories": {
